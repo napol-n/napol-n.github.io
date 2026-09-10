@@ -1,0 +1,69 @@
+[
+  {
+    "id": "SEC-ENG-001",
+    "status": "ACTIVE",
+    "title": "Security Engineering & Automation Lab",
+    "description": "Hands-on security engineering lab covering Linux security, centralized logging, detection engineering and security automation.",
+    "technologies": [
+      "Linux",
+      "Bash",
+      "Python",
+      "Detection",
+      "Automation"
+    ],
+    "url": "https://github.com/napol-n/security-engineering-automation-lab"
+  },
+  {
+    "id": "APPSEC-001",
+    "status": "ACTIVE",
+    "title": "Application Security & Vulnerability Management Lab",
+    "description": "Application security lab focused on vulnerability discovery, validation, remediation and secure engineering practices.",
+    "technologies": [
+      "AppSec",
+      "OWASP",
+      "Vulnerability Management",
+      "Web Security"
+    ],
+    "url": "#"
+  },
+  {
+    "id": "IAM-001",
+    "status": "COMPLETE",
+    "title": "Okta IAM Automation Lab",
+    "description": "Identity and access management lab covering user lifecycle, RBAC, SAML SSO, MFA and IAM administration.",
+    "technologies": [
+      "Okta",
+      "IAM",
+      "SAML",
+      "MFA",
+      "RBAC"
+    ],
+    "url": "https://github.com/napol-n/okta-iam-automation-lab"
+  },
+  {
+    "id": "IAM-002",
+    "status": "COMPLETE",
+    "title": "Terraform Entra IAM Lifecycle Lab",
+    "description": "Infrastructure-as-Code lab for Microsoft Entra ID identity lifecycle management using Terraform.",
+    "technologies": [
+      "Terraform",
+      "Entra ID",
+      "IAM",
+      "IaC"
+    ],
+    "url": "https://github.com/napol-n/terraform-entra-iam-lifecycle-lab"
+  },
+  {
+    "id": "NETSEC-001",
+    "status": "COMPLETE",
+    "title": "Public Wi-Fi Evil Twin & MITM Research",
+    "description": "Academic penetration testing project studying Evil Twin attacks, man-in-the-middle techniques and public Wi-Fi security risks.",
+    "technologies": [
+      "Wi-Fi Security",
+      "MITM",
+      "Wireshark",
+      "Network Security"
+    ],
+    "url": "#"
+  }
+]
