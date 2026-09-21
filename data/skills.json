@@ -1,0 +1,95 @@
+[
+  {
+    "id": "SEC-ENG",
+    "title": "Security engineering",
+    "description": "Linux permissions, process troubleshooting, Docker networking, Nginx, HTTP health checks, and log analysis.",
+    "links": [
+      {
+        "label": "ENGINEERING LAB",
+        "url": "#project-sec-eng-001"
+      }
+    ]
+  },
+  {
+    "id": "IAM",
+    "title": "Identity & access",
+    "description": "Okta, Entra ID, JML, group-based access, MFA, OAuth 2.0, Microsoft Graph, and workload identities.",
+    "links": [
+      {
+        "label": "OKTA",
+        "url": "#project-iam-001"
+      },
+      {
+        "label": "ENTRA ID",
+        "url": "#project-iam-002"
+      }
+    ]
+  },
+  {
+    "id": "APPSEC",
+    "title": "Application security",
+    "description": "HTTP, Burp Suite, BOLA / BFLA, SQL injection validation, DOM XSS, API security, risk prioritization, remediation, and retesting.",
+    "links": [
+      {
+        "label": "ASSESSMENT & RETESTS",
+        "url": "#project-appsec-001"
+      }
+    ]
+  },
+  {
+    "id": "SECOPS",
+    "title": "Security operations",
+    "description": "L1 triage, SIEM and endpoint telemetry, Windows logs, Wireshark, escalation, and incident documentation.",
+    "links": [
+      {
+        "label": "SOC EXPERIENCE",
+        "url": "#experience"
+      },
+      {
+        "label": "INVESTIGATION WRITE-UPS",
+        "url": "#labs"
+      },
+      {
+        "label": "WIRESHARK RESEARCH",
+        "url": "#project-netsec-001"
+      }
+    ]
+  },
+  {
+    "id": "AUTOMATION",
+    "title": "Automation & infrastructure",
+    "description": "Python, Terraform, Git, GitHub Actions, and shell-based Linux investigation.",
+    "links": [
+      {
+        "label": "PYTHON SOURCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/scripts/health_check.py"
+      },
+      {
+        "label": "TERRAFORM",
+        "url": "#project-iam-003"
+      }
+    ]
+  },
+  {
+    "id": "GRC",
+    "title": "Technical governance",
+    "description": "Project scope, asset inventory, risk register, risk treatment, and technical control mapping to ISO/IEC 27001.",
+    "links": [
+      {
+        "label": "CONTROL MAPPING",
+        "url": "https://github.com/napol-n/iso27001-secure-cicd/blob/main/grc/control-mapping.md"
+      }
+    ]
+  },
+  {
+    "id": "NETSEC",
+    "title": "Wireless & network security",
+    "description": "Evil Twin / MITM concepts, rogue APs, captive portals, deauthentication, packet capture, and HTTP / DNS / TLS traffic analysis in an academic testbed.",
+    "links": [
+      {
+        "label": "ACADEMIC RESEARCH",
+        "url": "#project-netsec-001"
+      }
+    ]
+  }
+]

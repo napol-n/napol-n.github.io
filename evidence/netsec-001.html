@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Public Wi-Fi Research Evidence | Tanapol Chumtakhob</title>
+  <meta name="description" content="Sanitized evidence summary of Napol’s academic Evil Twin and MITM research, with source-mapped lab findings and defensive controls.">
+  <meta name="theme-color" content="#050608">
+  <link rel="canonical" href="https://napol-n.github.io/evidence/netsec-001.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Security Testing of Public Wi-Fi | NAPOL.SEC">
+  <meta property="og:description" content="Controlled-lab research: rogue access points, traffic analysis, and HTTPS security controls.">
+  <meta property="og:url" content="https://napol-n.github.io/evidence/netsec-001.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../themes/console.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to evidence</a>
+  <header class="navbar">
+    <div class="container evidence-nav">
+      <a class="logo" href="../index.html#home">NAPOL<span>.SEC</span></a>
+      <a class="button secondary" href="../index.html#project-netsec-001">BACK TO CASE STUDY →</a>
+    </div>
+  </header>
+  <main id="main" class="container evidence-document">
+    <div class="evidence-heading">
+      <span class="record-id">NETSEC-001 / SANITIZED EVIDENCE SUMMARY</span>
+      <h1>Security Testing<br>of Public Wi-Fi</h1>
+      <p class="project-subtitle">Evil Twin &amp; Man-in-the-Middle Research</p>
+      <p class="prose">Tanapol Chumtakhob · Co-author / Student Researcher<br>Suranaree University of Technology · <span class="green">[OK] COMPLETE</span></p>
+      <p class="research-scope">Featured scope: controlled-lab experiments on researcher-owned Android, iOS, and Windows devices.</p>
+      <p class="prose">This page summarizes the supplied research article and DGT Showcase 2025 poster. It provides source references and qualified findings; it is not a raw research artifact or an independent replication.</p>
+      <nav class="evidence-links" aria-label="Evidence sections">
+        <a href="#article">ARTICLE SUMMARY ↓</a>
+        <a href="#showcase">DGT SHOWCASE ↓</a>
+        <a href="#architecture">ARCHITECTURE ↓</a>
+        <a href="#results">RESULTS ↓</a>
+        <a href="#scope">SCOPE ↓</a>
+      </nav>
+    </div>
+    <section id="article" class="evidence-section">
+      <span class="section-number">01 / PRIMARY SOURCE</span>
+      <h2>Research article</h2>
+      <p class="prose"><cite>Security Testing of Public Wi-Fi</cite>, supplied academic article. Its author block identifies Tanapol Chumtakhob as a co-author and lists Suranaree University of Technology. The abstract and lab-results introduction specify a controlled environment and researcher-owned devices.</p>
+      <dl class="source-map">
+        <div><dt>Figures 1–5</dt><dd>Evil Twin, Wifiphisher, Wireshark, Burp Suite, and mitmproxy conceptual workflows.</dd></div>
+        <div><dt>Tables 2–3</dt><dd>Fake-AP setup, reconnection, and captive-portal tests across Android, iOS, and Windows. Table 3 identifies fake-data entry in the Android test.</dd></div>
+        <div><dt>Tables 4–6</dt><dd>Packet visibility, HTTP interception, HSTS/pinning outcomes, and proxy flow observations with TLS-related limitations.</dd></div>
+        <div><dt>Discussion / conclusion</dt><dd>Security awareness, secure communications, and rogue-AP monitoring as defensive themes.</dd></div>
+      </dl>
+      <p class="evidence-note">The supplied article contains incomplete editorial fields. No journal publication, acceptance date, peer-review status, or independently verified success rate is claimed.</p>
+    </section>
+    <section id="showcase" class="evidence-section">
+      <span class="section-number">02 / PRIMARY SOURCE</span>
+      <h2>DGT Showcase 2025 poster</h2>
+      <p class="prose">The supplied poster carries “SEMINAR IN DIGITAL TECHNOLOGY / DGT SHOWCASE 2025” and the same project title and co-authorship. It summarizes the testbed, Evil Twin/MITM simulation, traffic collection, and application behavior evaluation.</p>
+      <p class="prose">Its tool list names Kali Linux, Wifiphisher, a fake access point, Wireshark, Burp Suite, and mitmproxy. Its results table describes HTTP modification and packet observations including DNS, HTTP, and HTTPS SNI. The conclusion emphasizes awareness and HTTPS/HSTS.</p>
+      <p class="evidence-note">The poster is a compact project summary. The article’s more specific transport-security limitations govern the portfolio wording. A showcase poster is not an industry certification.</p>
+    </section>
+    <section id="architecture" class="evidence-section">
+      <span class="section-number">03 / ARCHITECTURE SUMMARY</span>
+      <h2>Connection path and analysis roles</h2>
+      <p class="prose">Based on article Figures 1–5 and their accompanying workflow descriptions. These are conceptual roles, not a claim that every tool ran in one serial chain.</p>
+      <ol class="research-flow">
+        <li><strong>Legitimate Wi-Fi + rogue AP</strong><p>The testbed compares a legitimate connection with an Evil Twin that imitates the network identity. Deauthentication and signal attractiveness are part of the reported connection tests.</p></li>
+        <li><strong>Researcher-owned test device</strong><p>The device connects to the rogue AP; Wifiphisher presents a simulated captive portal in the relevant experiment.</p></li>
+        <li><strong>Researcher-controlled analysis environment</strong><p>Traffic passes through the test environment toward destination services. Wireshark observes packets. Burp Suite and mitmproxy perform the respective proxy experiments.</p></li>
+        <li><strong>Protocol and control evaluation</strong><p>Compare HTTP/DNS visibility with TLS metadata, HSTS downgrade resistance, certificate rejection, and pinning behavior.</p></li>
+      </ol>
+    </section>
+    <section id="results" class="evidence-section">
+      <span class="section-number">04 / EXPERIMENT RESULTS</span>
+      <h2>What the experiments support</h2>
+      <p class="prose">Qualitative observations from the supplied documents. Test-table rows are scenarios, not a statistical sample or a measured success percentage.</p>
+      <div class="evidence-table-wrap" tabindex="0" role="region" aria-label="Research findings table; scroll horizontally if needed">
+        <table class="evidence-table">
+          <caption>Sanitized findings and source references</caption>
+          <thead><tr><th scope="col">Test / source</th><th scope="col">Reported observation</th><th scope="col">Interpretation boundary</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Rogue AP<br>Abstract; Table 2</th><td>Test devices connected to the fake AP. The article associates attraction with a stronger or more attractive signal.</td><td>This does not establish that every device will automatically join a matching SSID.</td></tr>
+            <tr><th scope="row">Captive portal<br>Table 3</th><td>The portal displayed on Android, iOS, and Windows. The Android scenario recorded submitted fake data.</td><td>Demonstrates a deceptive login flow using test inputs; no personal values or captured credentials are reproduced.</td></tr>
+            <tr><th scope="row">Packet visibility<br>Table 4</th><td>Wireshark exposed plaintext HTTP and DNS queries. The tested TLS case exposed domain/SNI metadata without readable protected content.</td><td>Packet capture and metadata analysis do not demonstrate decryption of protected HTTPS payloads.</td></tr>
+            <tr><th scope="row">HTTP interception<br>Table 5; Figures 9–12</th><td>Burp Suite inspected suitable HTTP requests/responses and supported content modification.</td><td>Limited to traffic reachable under the tested proxy/transport conditions; no server compromise is established.</td></tr>
+            <tr><th scope="row">HSTS / pinning<br>Table 5</th><td>The tested HSTS downgrade path and pinned-app interception did not succeed.</td><td>Different trust controls constrained different attack paths. HSTS is not itself a TLS decryption mechanism or a universal proxy blocker.</td></tr>
+            <tr><th scope="row">Proxy flows<br>Table 6</th><td>mitmproxy recorded request/response flow information; some sessions failed because clients rejected the certificate or TLS negotiation failed.</td><td>HTTPS proxy visibility depends on the client trust setup. The document does not establish a TLS encryption break.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Defensive takeaways</h3>
+      <ul class="prose">
+        <li>The study links risk to network selection, deceptive captive portals, and user decisions about submitting sensitive information.</li>
+        <li>Its conclusions favor secure communications, appropriate wireless security settings, and rogue-AP monitoring.</li>
+        <li>The documented HSTS, pinning, and certificate-rejection outcomes show why joining an untrusted network and exposing application contents are separate questions.</li>
+      </ul>
+    </section>
+    <section id="scope" class="evidence-section">
+      <span class="section-number">05 / ETHICS &amp; EVIDENCE HANDLING</span>
+      <h2>Controlled research, scoped evidence</h2>
+      <p class="prose">The featured experiments are the article’s controlled-lab subset using researcher-owned devices. This portfolio does not present the article’s separate field-test results. My role is co-author / student researcher; the work is academic research and hands-on network security testing.</p>
+      <p class="prose">This summary excludes personal email addresses, other team members’ identifying details, network and device identifiers, request/cookie values, credentials, raw packet captures, source screenshots, and Office-document metadata. The original article and poster have not been added to the public site.</p>
+      <p class="evidence-note">Evidence type: author-supplied research documents, summarized for the portfolio. No public download of the originals or claim of independent replication is implied.</p>
+      <a class="button secondary" href="../index.html#project-netsec-001">RETURN TO PROJECT →</a>
+    </section>
+  </main>
+  <footer><div class="container footer-content"><span>NAPOL.SEC / NETSEC-001</span><span>ACADEMIC SECURITY RESEARCH</span></div></footer>
+</body>
+</html>

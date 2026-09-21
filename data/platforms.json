@@ -1,0 +1,38 @@
+[
+  {
+    "name": "LinkedIn",
+    "id": "IN",
+    "description": "Professional experience and a direct path to connect about cybersecurity opportunities.",
+    "url": "https://www.linkedin.com/in/tanapol-chumtakhob-a10503273/"
+  },
+  {
+    "name": "GitHub",
+    "id": "GIT",
+    "description": "Source code, architecture notes, implementation records, and lab evidence.",
+    "url": "https://github.com/napol-n"
+  },
+  {
+    "name": "Hack The Box",
+    "id": "HTB",
+    "description": "Public training profile. Related Sherlock investigations are linked in the write-up collection.",
+    "url": "https://profile.hackthebox.com/profile/019ca703-e228-717c-9a32-04ece74d3461"
+  },
+  {
+    "name": "Blue Team Labs Online",
+    "id": "BTLO",
+    "description": "Blue-team training profile, with selected investigation notes available on GitHub.",
+    "url": "https://blueteamlabs.online/home/user/635ae2640b49ae2dc26e81"
+  },
+  {
+    "name": "TryHackMe",
+    "id": "THM",
+    "description": "Public cybersecurity learning profile.",
+    "url": "https://tryhackme.com/p/Napol19"
+  },
+  {
+    "name": "CyberDefenders",
+    "id": "CD",
+    "description": "Public blue-team learning profile, supported by selected lab write-ups.",
+    "url": "https://cyberdefenders.org/p/Napol"
+  }
+]

@@ -10,10 +10,18 @@
 
   <meta
     name="description"
-    content="Tanapol Chumtakhob — Security Engineering, IAM, Application Security and Cybersecurity Portfolio."
+    content="Tanapol Chumtakhob — cybersecurity, Security Engineering, IAM and AppSec. SOC internship experience, identity automation, remediation and verified lab results."
   >
 
-  <title>Napol // Security Portfolio</title>
+  <title>Tanapol Chumtakhob | Security Engineering · IAM · AppSec</title>
+  <link rel="canonical" href="https://napol-n.github.io/">
+  <meta name="theme-color" content="#07111d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tanapol Chumtakhob | Security Engineering · IAM · AppSec">
+  <meta property="og:description" content="Security Engineering · IAM · AppSec. Explore implementation, remediation, retest results and public project evidence.">
+  <meta property="og:url" content="https://napol-n.github.io/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="themes/console.css">
@@ -21,8 +29,15 @@
 
 <body>
 
-  <div class="grid-background"></div>
-  <div class="scanline"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grid-background" aria-hidden="true">
+    <span class="ambient-shape square-outline square-one"></span>
+    <span class="ambient-shape square-outline square-two"></span>
+    <span class="ambient-shape square-fill square-three"></span>
+    <span class="ambient-shape square-fill square-four"></span>
+    <span class="ambient-shape circle-node node-one"></span>
+    <span class="ambient-shape circle-node node-two"></span>
+  </div>
 
 
   <!-- NAVIGATION -->
@@ -34,12 +49,19 @@
         NAPOL<span>.SEC</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#home">00 HOME</a>
-        <a href="#projects">01 PROJECTS</a>
-        <a href="#experience">02 EXPERIENCE</a>
-        <a href="#skills">03 STACK</a>
-      </nav>
+      <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="true" hidden>MENU <span aria-hidden="true">☰</span></button>
+      <nav id="primary-navigation" class="nav-links" aria-label="Main navigation">
+<a href="#home">00 HOME</a>
+<a href="#about">01 ABOUT</a>
+<a href="#experience">02 EXPERIENCE</a>
+<a href="#projects">03 PROJECTS</a>
+<a href="#labs">04 LABS</a>
+<a href="#certifications">05 CERTIFICATIONS</a>
+<a href="#skills">06 SKILLS</a>
+<a href="#profiles">07 CYBER PROFILES</a>
+<a href="#education">08 EDUCATION</a>
+<a href="#contact">09 CONTACT</a>
+</nav>
 
       <div class="status-badge">
         <span class="status-dot"></span>
@@ -51,7 +73,7 @@
   </header>
 
 
-  <main>
+  <main id="main">
 
     <!-- HERO -->
     <section id="home" class="hero">
@@ -59,29 +81,10 @@
       <div class="container">
 
         <div class="system-line">
-
-          <div>
-            <span class="label">NODE</span>
-            SEC-ENG-01
-          </div>
-
-          <div>
-            <span class="label">REGION</span>
-            APAC-TH
-          </div>
-
-          <div>
-            <span class="label">STATUS</span>
-            <span class="green">ONLINE</span>
-          </div>
-
-          <div>
-            <span class="label">LOCAL_TIME</span>
-            <span id="system-clock">--:--:--</span>
-          </div>
-
+          <div><span class="label">PORTFOLIO</span> NAPOL.SEC / V2</div>
+          <div><span class="label">BASED IN</span> THAILAND</div>
+          <div><span class="label">FOCUS</span> CYBERSECURITY</div>
         </div>
-
 
         <div class="hero-grid">
 
@@ -91,7 +94,7 @@
             <div class="terminal-command">
               <span>napol@security</span>:~$
               <span class="command-text">whoami</span>
-              <span class="cursor"></span>
+
             </div>
 
             <div class="eyebrow">
@@ -103,11 +106,7 @@
               <span>CHUMTAKHOB</span>
             </h1>
 
-            <p class="hero-description">
-              Cybersecurity practitioner focused on security engineering,
-              identity and access management, application security,
-              detection engineering and security automation.
-            </p>
+            <p class="hero-description">I’m Napol, a final-semester student focused on cybersecurity. I build evidence-driven projects across security engineering, identity security, and application security — informed by hands-on SOC internship experience.</p>
 
             <div class="hero-actions">
 
@@ -115,34 +114,26 @@
                 VIEW PROJECTS
               </a>
 
-              <a
-                href="https://github.com/napol-n"
-                target="_blank"
-                rel="noopener"
-                class="button secondary"
-              >
-                GITHUB ↗
-              </a>
-
+              <a href="https://www.linkedin.com/in/tanapol-chumtakhob-a10503273/" target="_blank" rel="noopener noreferrer" class="button linkedin">LINKEDIN ↗</a>
+              <a href="https://github.com/napol-n" target="_blank" rel="noopener noreferrer" class="button secondary">GITHUB ↗</a>
             </div>
-
 
             <!-- TELEMETRY -->
             <div class="telemetry-grid">
 
               <div class="telemetry-card">
-                <span>PROJECTS</span>
-                <strong id="project-count">--</strong>
+                <span>PROJECTS / LABS</span>
+                <strong id="project-count">07</strong>
               </div>
 
               <div class="telemetry-card">
                 <span>EXPERIENCE</span>
-                <strong>04 MO</strong>
+                <strong><a href="#experience">SOC INTERN →</a></strong>
               </div>
 
               <div class="telemetry-card">
                 <span>CERT</span>
-                <strong>ISC² CC</strong>
+                <strong><a href="#certifications">ISC2 CC →</a></strong>
               </div>
 
               <div class="telemetry-card">
@@ -161,10 +152,8 @@
             <div class="console-panel">
 
               <div class="panel-heading">
-                <span>IDENTITY.STATUS</span>
-                <span class="yellow">
-                  ● ACTIVE
-                </span>
+                <span>napol@security: ~</span>
+                <span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span>
               </div>
 
               <div class="profile-row">
@@ -179,17 +168,19 @@
 
               <div class="profile-row">
                 <span>IDENTITY</span>
-                <strong>IAM / SSO / MFA</strong>
+                <strong>IAM / Identity Security</strong>
               </div>
 
+              <div class="profile-row"><span>APPSEC</span><strong>Application Security</strong></div>
+              <div class="profile-row"><span>STATUS</span><strong>Final semester / preparing for full-time roles</strong></div>
               <div class="profile-row">
                 <span>LOCATION</span>
-                <strong>Bangkok, TH</strong>
+                <strong>Thailand</strong>
               </div>
 
               <div class="profile-row">
                 <span>CERTIFICATION</span>
-                <strong>ISC² CC</strong>
+                <strong><a href="#certifications">ISC2 CC →</a></strong>
               </div>
 
               <div class="profile-row">
@@ -202,45 +193,16 @@
             </div>
 
 
-            <!-- ACTIVITY LOG -->
             <div class="console-panel activity-panel">
-
-              <div class="panel-heading">
-                <span>SECURITY.LOG</span>
-                <span class="green">
-                  LIVE
-                </span>
-              </div>
-
+              <div class="panel-heading"><span>SECURITY.LOG</span><span class="panel-meta">PORTFOLIO STATE</span></div>
               <div class="log-window">
-
-                <div class="log-line">
-                  <span class="log-time">[INFO]</span>
-                  portfolio initialized
-                </div>
-
-                <div class="log-line">
-                  <span class="log-ok">[OK]</span>
-                  security-engineering lab
-                </div>
-
-                <div class="log-line">
-                  <span class="log-ok">[OK]</span>
-                  okta IAM lab
-                </div>
-
-                <div class="log-line">
-                  <span class="log-ok">[OK]</span>
-                  terraform entra lab
-                </div>
-
-                <div class="log-line">
-                  <span class="log-warn">[RUN]</span>
-                  application security lab
-                </div>
-
-              </div>
-
+                <a class="log-line" href="#project-sec-eng-001"><span class="log-ok">[OK]</span> Engineering workflow <span>→</span></a>
+                <a class="log-line" href="#project-appsec-001"><span class="log-ok">[OK]</span> AppSec assessment complete <span>→</span></a>
+                <a class="log-line" href="#project-iam-001"><span class="log-ok">[OK]</span> Okta IAM automation <span>→</span></a>
+                <a class="log-line" href="#project-iam-002"><span class="log-ok">[OK]</span> Entra IAM automation <span>→</span></a>
+                <a class="log-line" href="#project-iam-003"><span class="log-ok">[OK]</span> Terraform IAM lifecycle <span>→</span></a>
+                <p class="evidence-note">Documented lab milestones · not live telemetry</p>
+            </div>
             </div>
 
           </aside>
@@ -253,49 +215,7 @@
 
 
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-
-      <div class="container">
-
-        <div class="section-header">
-
-          <div>
-            <span class="section-number">01</span>
-            <h2>SELECTED PROJECTS</h2>
-          </div>
-
-          <span class="section-command">
-            ls -la ./projects/
-          </span>
-
-        </div>
-
-
-        <div class="section-intro">
-
-          <span>PROJECT_INDEX</span>
-
-          <p>
-            Engineering labs and security projects with
-            reproducible evidence, documentation and source code.
-          </p>
-
-        </div>
-
-
-        <div
-          id="project-grid"
-          class="project-grid"
-        >
-        </div>
-
-      </div>
-
-    </section>
-
-
-
+<section id="about" class="section"><div class="container"><div class="section-header"><div><span class="section-number">01</span><h2>ABOUT</h2></div><span class="section-command">CONTEXT / DIRECTION</span></div><div class="about-grid"><p class="lead">From investigating alerts<br>to engineering the controls.</p><div class="prose"><p>I’m Tanapol Chumtakhob — Napol. My focus is security engineering and identity security: understanding a failure, changing the right control, and checking the resulting state.</p><p>My work spans SOC monitoring, Python-based IAM workflows, Terraform-managed access, and application-security remediation with formal retesting. At SUT, I also co-authored wireless-security research covering rogue access points, traffic analysis, and defensive controls. I’m preparing for full-time roles in security engineering, IAM, and AppSec, with interests in cybersecurity consulting and technical GRC.</p><a class="project-link" href="#projects">INSPECT THE WORK →</a></div></div></div></section>
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
 
@@ -309,7 +229,7 @@
           </div>
 
           <span class="section-command">
-            cat ./experience.log
+            PROFESSIONAL EXPERIENCE
           </span>
 
         </div>
@@ -342,12 +262,13 @@
                 </span>
 
                 <h3>SOC Analyst Intern</h3>
+                <p class="date-inline">Feb 2026 – May 2026</p>
 
                 <p>Cyber Defense TH</p>
               </div>
 
-              <span class="tag complete">
-                COMPLETE
+              <span class="tag">
+                [INFO] INTERNSHIP
               </span>
 
             </div>
@@ -355,11 +276,16 @@
 
             <p class="experience-description">
               Performed L1 security monitoring, alert triage,
-              initial investigation and escalation across endpoint,
+              initial investigation, escalation, and incident documentation across endpoint,
               SIEM, network and Windows security telemetry.
             </p>
 
 
+            <details class="experience-details"><summary>Responsibilities &amp; approach</summary>
+              <ul><li>Reviewed L1 alerts and relevant endpoint, network, and Windows telemetry.</li><li>Collected initial findings and escalated cases for further investigation.</li><li>Documented incident context and investigation steps to support handover.</li></ul>
+              <p>Experience summary. Public technical examples are provided through my independent labs.</p>
+
+            </details>
             <div class="tags">
 
               <span>Elastic / ELK</span>
@@ -367,7 +293,8 @@
               <span>SentinelOne</span>
               <span>FortiGate</span>
               <span>Windows Events</span>
-              <span>Incident Response</span>
+              <span>Wireshark</span>
+              <span>Alert Triage</span>
 
             </div>
 
@@ -381,8 +308,8 @@
 
 
 
-    <!-- STACK -->
-    <section id="skills" class="section">
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
 
       <div class="container">
 
@@ -390,131 +317,92 @@
 
           <div>
             <span class="section-number">03</span>
-            <h2>SECURITY STACK</h2>
+            <h2>SELECTED PROJECTS</h2>
           </div>
 
           <span class="section-command">
-            cat /etc/security-stack
+            SOURCE / IMPLEMENTATION / VALIDATION
           </span>
 
         </div>
 
 
-        <div class="skills-grid">
+        <div class="section-intro">
 
+          <span>PROJECT_INDEX</span>
 
-          <article class="skill-card">
-
-            <div class="skill-header">
-              <span class="skill-id">
-                IAM
-              </span>
-
-              <span>01</span>
-            </div>
-
-            <h3>Identity & Access</h3>
-
-            <p>
-              Okta · Entra ID · SAML · MFA · RBAC ·
-              Identity Lifecycle
-            </p>
-
-          </article>
-
-
-          <article class="skill-card">
-
-            <div class="skill-header">
-              <span class="skill-id">
-                SEC-ENG
-              </span>
-
-              <span>02</span>
-            </div>
-
-            <h3>Security Engineering</h3>
-
-            <p>
-              Linux · Windows · Networking · Hardening ·
-              Logging · Detection
-            </p>
-
-          </article>
-
-
-          <article class="skill-card">
-
-            <div class="skill-header">
-              <span class="skill-id">
-                AUTOMATION
-              </span>
-
-              <span>03</span>
-            </div>
-
-            <h3>Automation</h3>
-
-            <p>
-              Python · Bash · Terraform · Git ·
-              GitHub Actions
-            </p>
-
-          </article>
-
-
-          <article class="skill-card">
-
-            <div class="skill-header">
-              <span class="skill-id">
-                SECOPS
-              </span>
-
-              <span>04</span>
-            </div>
-
-            <h3>Security Operations</h3>
-
-            <p>
-              ELK · Splunk · SentinelOne · Wireshark ·
-              MITRE ATT&CK
-            </p>
-
-          </article>
-
+          <p>
+            Start with the result. Open a case study for the implementation and security decision, then follow the evidence to the repository.
+          </p>
 
         </div>
 
-      </div>
 
+        <div id="project-grid" class="project-grid">
+<!-- fallback:projects:start -->
+<article class="project-card" id="project-sec-eng-001"><span class="record-id">SEC-ENG-001 / DOCUMENTED</span><h3>Security Engineering &amp; Automation Lab</h3><p>Investigated controlled service failures, restored least-privilege operation, and automated health and heartbeat checks.</p><p class="project-result"><span class="micro-label">RESULT</span>HTTP 502 → 200. Non-root log access restored. Process recovery verified through fresh heartbeats.</p><div class="evidence-links"><a href="https://github.com/napol-n/security-engineering-automation-lab" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day01-network-service-incident.md" target="_blank" rel="noopener noreferrer">INCIDENT EVIDENCE ↗</a><a href="https://github.com/napol-n/security-engineering-automation-lab/blob/main/scripts/log_analyzer.py" target="_blank" rel="noopener noreferrer">AUTOMATION ↗</a></div></article>
+<article class="project-card" id="project-appsec-001"><span class="record-id">APPSEC-001 / COMPLETE</span><h3>Application Security &amp; Vulnerability Management Lab</h3><p>Completed a ten-lab assessment of a local OWASP Juice Shop instance, from discovery and validation through risk prioritization, source remediation, and formal retesting.</p><p class="project-result"><span class="micro-label">RESULT</span>10/10 labs complete. Three source fixes passed formal retests; five findings remain outstanding with remediation deferred.</p><div class="evidence-links"><a href="https://github.com/napol-n/application-security-vulnerability-management-lab" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/notes/final-vulnerability-report.md" target="_blank" rel="noopener noreferrer">FINAL REPORT ↗</a><a href="https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/notes/final-disposition-matrix.md" target="_blank" rel="noopener noreferrer">DISPOSITION ↗</a></div></article>
+<article class="project-card" id="project-iam-001"><span class="record-id">IAM-001 / COMPLETE</span><h3>Okta IAM Automation Lab</h3><p>Automated Joiner–Mover–Leaver workflows with scoped OAuth access and private_key_jwt authentication.</p><p class="project-result"><span class="micro-label">RESULT</span>Joiner, mover, deactivation, session clearing, and Okta Verify events documented in the System Log.</p><div class="evidence-links"><a href="https://github.com/napol-n/okta-iam-automation-lab" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="https://github.com/napol-n/okta-iam-automation-lab/blob/main/src/move_user.py" target="_blank" rel="noopener noreferrer">IMPLEMENTATION ↗</a><a href="https://github.com/napol-n/okta-iam-automation-lab/blob/main/evidence/README.md" target="_blank" rel="noopener noreferrer">EVIDENCE ↗</a></div></article>
+<article class="project-card" id="project-iam-002"><span class="record-id">IAM-002 / DOCUMENTED</span><h3>Microsoft Entra IAM Automation Lab</h3><p>Implemented identity lifecycle operations through Microsoft Graph using a certificate-authenticated workload identity.</p><p class="project-result"><span class="micro-label">RESULT</span>Lifecycle actions attributed to the workload identity in Entra audit logs; account disablement and access removal documented.</p><div class="evidence-links"><a href="https://github.com/napol-n/entra-iam-automation-lab" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="https://github.com/napol-n/entra-iam-automation-lab/blob/main/src/revoke_sessions.py" target="_blank" rel="noopener noreferrer">IMPLEMENTATION ↗</a><a href="https://github.com/napol-n/entra-iam-automation-lab/blob/main/evidence/screenshots/03b-leaver-revoke-sessions.png" target="_blank" rel="noopener noreferrer">EVIDENCE ↗</a></div></article>
+<article class="project-card" id="project-iam-003"><span class="record-id">IAM-003 / DOCUMENTED</span><h3>Terraform Microsoft Entra IAM Lifecycle Lab</h3><p>Managed directory resources as code, with documented lifecycle transitions, drift remediation, and resource import.</p><p class="project-result"><span class="micro-label">RESULT</span>Drift repaired and an existing group adopted; subsequent plans recorded no changes.</p><div class="evidence-links"><a href="https://github.com/napol-n/terraform-entra-iam-lifecycle-lab" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="https://github.com/napol-n/terraform-entra-iam-lifecycle-lab/blob/main/main.tf" target="_blank" rel="noopener noreferrer">IMPLEMENTATION ↗</a><a href="https://github.com/napol-n/terraform-entra-iam-lifecycle-lab/blob/main/evidence/README.md" target="_blank" rel="noopener noreferrer">EVIDENCE ↗</a></div></article>
+<article class="project-card" id="project-netsec-001"><span class="record-id">NETSEC-001 / COMPLETE</span><h3>Security Testing of Public Wi-Fi</h3><p>Controlled wireless-security research evaluating rogue access points, MITM techniques, traffic visibility, and user behavior in public Wi-Fi scenarios.</p><p class="project-result"><span class="micro-label">RESULT</span>Plaintext HTTP and network metadata were visible; HTTPS trust controls constrained interception in the tested setup.</p><div class="evidence-links"><a href="evidence/netsec-001.html">RESEARCH SUMMARY →</a></div></article>
+<article class="project-card" id="project-grc-001"><span class="record-id">GRC-001 / DOCUMENTED</span><h3>ISO 27001 · Secure CI/CD</h3><p>Small educational implementation connecting a GitHub Actions security gate to an ISO/IEC 27001 control mapping.</p><p class="project-result"><span class="micro-label">RESULT</span>A Python pattern check fails CI on selected credential assignments; the repository maps this control to a documented risk.</p><div class="evidence-links"><a href="https://github.com/napol-n/iso27001-secure-cicd" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="https://github.com/napol-n/iso27001-secure-cicd/blob/main/security/secret_scan.py" target="_blank" rel="noopener noreferrer">IMPLEMENTATION ↗</a><a href="https://github.com/napol-n/iso27001-secure-cicd/blob/main/evidence/screenshots/02-secret-detection-fail.png" target="_blank" rel="noopener noreferrer">EVIDENCE ↗</a></div></article>
+<!-- fallback:projects:end -->
+        </div>
+        <p class="evidence-note">Personal labs and academic research. COMPLETE describes the project scope; remediation disposition is reported separately. DOCUMENTED indicates published implementation records.</p>
+      </div>
     </section>
 
+
+
+<section id="labs" class="section"><div class="container"><div class="section-header"><div><span class="section-number">04</span><h2>LABS / WRITE-UPS</h2></div><span class="section-command">INVESTIGATION / NETWORK ANALYSIS</span></div><p class="section-description">Selected investigations and network study notes from controlled learning environments.</p><div id="lab-grid" class="resource-grid" data-source="labs">
+<!-- fallback:labs:start -->
+<article class="skill-card"><span class="record-id">DFIR / HTB</span><h3>Brutus · Unix log analysis</h3><p>Investigation notes on SSH authentication records, session correlation, and attacker activity in a training scenario.</p><div class="evidence-links"><a href="https://github.com/napol-n/WriteUp/blob/main/HTB_%20Sherlocks/Brutus.md" target="_blank" rel="noopener noreferrer">READ WRITE-UP ↗</a></div></article>
+<article class="skill-card"><span class="record-id">DFIR / BTLO</span><h3>Nonyx · Memory forensics</h3><p>Volatility-based study of injected code and system hooks in a BlackEnergy training memory image.</p><div class="evidence-links"><a href="https://github.com/napol-n/WriteUp/blob/main/BTLO%20%28BLUETEAMLABONLINE%29/Nonyx.md" target="_blank" rel="noopener noreferrer">READ WRITE-UP ↗</a></div></article>
+<article class="skill-card"><span class="record-id">NETWORK / CYBERDEFENDERS</span><h3>WebStrike · Web attack investigation</h3><p>Wireshark investigation notes tracing an uploaded web shell and related HTTP activity in a supplied PCAP.</p><div class="evidence-links"><a href="https://github.com/napol-n/WriteUp/blob/main/CYBERDEFENDERS/WebStrike%20Lab.md" target="_blank" rel="noopener noreferrer">READ WRITE-UP ↗</a></div></article>
+<article class="skill-card"><span class="record-id">NETWORK / LAB GUIDE</span><h3>DNS spoofing &amp; TLS inspection</h3><p>Documented dnsmasq-based DNS redirection and browser-session-key TLS inspection in controlled lab environments.</p><div class="evidence-links"><a href="https://github.com/napol-n/DNS-Spoofing/blob/main/README.md" target="_blank" rel="noopener noreferrer">DNS GUIDE ↗</a><a href="https://github.com/napol-n/WireSharkTLS/blob/main/README.md" target="_blank" rel="noopener noreferrer">TLS GUIDE ↗</a></div></article>
+<!-- fallback:labs:end -->
+</div><details class="archive-details"><summary>More learning notes</summary><p class="prose">The main WriteUp repository includes further HTB, BTLO, and CyberDefenders notes. Older MITM proxy documentation is retained as a study reference.</p><div class="evidence-links"><a href="https://github.com/napol-n/WriteUp" target="_blank" rel="noopener noreferrer">WRITE-UP ARCHIVE ↗</a><a href="https://github.com/napol-n/PROXYMAN" target="_blank" rel="noopener noreferrer">MITM PROXY NOTES ↗</a></div></details></div></section>
+<section id="certifications" class="section"><div class="container"><div class="section-header"><div><span class="section-number">05</span><h2>CERTIFICATIONS</h2></div><span class="section-command">INDUSTRY CREDENTIAL</span></div><div id="certification-list" data-source="certifications">
+<!-- fallback:certifications:start -->
+<article class="certification-card"><div class="cert-mark" aria-hidden="true">CC</div><div><span class="record-id">ISC2 / INDUSTRY CERTIFICATION</span><h3>Certified in Cybersecurity (CC)</h3><p class="prose">ISC2 Certified in Cybersecurity. Industry certification, separate from lab and training achievements.</p></div></article>
+<!-- fallback:certifications:end -->
+</div><p class="evidence-note">Explore hands-on training separately in <a href="#profiles">Cyber Profiles →</a>.</p></div></section>
+<section id="skills" class="section"><div class="container"><div class="section-header"><div><span class="section-number">06</span><h2>SECURITY SKILLS</h2></div><span class="section-command">CAPABILITY → EVIDENCE</span></div><p class="section-description">Capabilities grouped by domain. Follow the evidence for implementation scope.</p><div id="skill-grid" class="skills-grid" data-source="skills">
+<!-- fallback:skills:start -->
+<article class="skill-card"><span class="record-id">SEC-ENG</span><h3>Security engineering</h3><p>Linux permissions, process troubleshooting, Docker networking, Nginx, HTTP health checks, and log analysis.</p><div class="evidence-links"><a href="#project-sec-eng-001">ENGINEERING LAB →</a></div></article>
+<article class="skill-card"><span class="record-id">IAM</span><h3>Identity &amp; access</h3><p>Okta, Entra ID, JML, group-based access, MFA, OAuth 2.0, Microsoft Graph, and workload identities.</p><div class="evidence-links"><a href="#project-iam-001">OKTA →</a><a href="#project-iam-002">ENTRA ID →</a></div></article>
+<article class="skill-card"><span class="record-id">APPSEC</span><h3>Application security</h3><p>HTTP, Burp Suite, BOLA / BFLA, SQL injection validation, DOM XSS, API security, risk prioritization, remediation, and retesting.</p><div class="evidence-links"><a href="#project-appsec-001">ASSESSMENT &amp; RETESTS →</a></div></article>
+<article class="skill-card"><span class="record-id">SECOPS</span><h3>Security operations</h3><p>L1 triage, SIEM and endpoint telemetry, Windows logs, Wireshark, escalation, and incident documentation.</p><div class="evidence-links"><a href="#experience">SOC EXPERIENCE →</a><a href="#labs">INVESTIGATION WRITE-UPS →</a><a href="#project-netsec-001">WIRESHARK RESEARCH →</a></div></article>
+<article class="skill-card"><span class="record-id">AUTOMATION</span><h3>Automation &amp; infrastructure</h3><p>Python, Terraform, Git, GitHub Actions, and shell-based Linux investigation.</p><div class="evidence-links"><a href="https://github.com/napol-n/security-engineering-automation-lab/blob/main/scripts/health_check.py" target="_blank" rel="noopener noreferrer">PYTHON SOURCE ↗</a><a href="#project-iam-003">TERRAFORM →</a></div></article>
+<article class="skill-card"><span class="record-id">GRC</span><h3>Technical governance</h3><p>Project scope, asset inventory, risk register, risk treatment, and technical control mapping to ISO/IEC 27001.</p><div class="evidence-links"><a href="https://github.com/napol-n/iso27001-secure-cicd/blob/main/grc/control-mapping.md" target="_blank" rel="noopener noreferrer">CONTROL MAPPING ↗</a></div></article>
+<article class="skill-card"><span class="record-id">NETSEC</span><h3>Wireless &amp; network security</h3><p>Evil Twin / MITM concepts, rogue APs, captive portals, deauthentication, packet capture, and HTTP / DNS / TLS traffic analysis in an academic testbed.</p><div class="evidence-links"><a href="#project-netsec-001">ACADEMIC RESEARCH →</a></div></article>
+<!-- fallback:skills:end -->
+</div></div></section>
+<section id="profiles" class="section"><div class="container"><div class="section-header"><div><span class="section-number">07</span><h2>CYBER PROFILES</h2></div><span class="section-command">PUBLIC PROFILES</span></div><p class="section-description">Connect professionally, inspect source code, or explore my hands-on learning profiles.</p><div id="platform-grid" class="platform-grid" data-source="platforms">
+<!-- fallback:platforms:start -->
+<article class="skill-card"><span class="record-id">IN</span><h3>LinkedIn</h3><p>Professional experience and a direct path to connect about cybersecurity opportunities.</p><div class="evidence-links"><a href="https://www.linkedin.com/in/tanapol-chumtakhob-a10503273/" target="_blank" rel="noopener noreferrer">VIEW PROFILE ↗</a></div></article>
+<article class="skill-card"><span class="record-id">GIT</span><h3>GitHub</h3><p>Source code, architecture notes, implementation records, and lab evidence.</p><div class="evidence-links"><a href="https://github.com/napol-n" target="_blank" rel="noopener noreferrer">VIEW PROFILE ↗</a></div></article>
+<article class="skill-card"><span class="record-id">HTB</span><h3>Hack The Box</h3><p>Public training profile. Related Sherlock investigations are linked in the write-up collection.</p><div class="evidence-links"><a href="https://profile.hackthebox.com/profile/019ca703-e228-717c-9a32-04ece74d3461" target="_blank" rel="noopener noreferrer">VIEW PROFILE ↗</a></div></article>
+<article class="skill-card"><span class="record-id">BTLO</span><h3>Blue Team Labs Online</h3><p>Blue-team training profile, with selected investigation notes available on GitHub.</p><div class="evidence-links"><a href="https://blueteamlabs.online/home/user/635ae2640b49ae2dc26e81" target="_blank" rel="noopener noreferrer">VIEW PROFILE ↗</a></div></article>
+<article class="skill-card"><span class="record-id">THM</span><h3>TryHackMe</h3><p>Public cybersecurity learning profile.</p><div class="evidence-links"><a href="https://tryhackme.com/p/Napol19" target="_blank" rel="noopener noreferrer">VIEW PROFILE ↗</a></div></article>
+<article class="skill-card"><span class="record-id">CD</span><h3>CyberDefenders</h3><p>Public blue-team learning profile, supported by selected lab write-ups.</p><div class="evidence-links"><a href="https://cyberdefenders.org/p/Napol" target="_blank" rel="noopener noreferrer">VIEW PROFILE ↗</a></div></article>
+<!-- fallback:platforms:end -->
+</div></div></section>
+<section id="education" class="section"><div class="container"><div class="section-header"><div><span class="section-number">08</span><h2>EDUCATION</h2></div><span class="section-command">ACADEMIC BACKGROUND</span></div><article class="education-card"><div><span class="record-id">SUT / EDUCATION</span><h3>Suranaree University of Technology</h3><p class="prose">Final-semester student · Preparing for full-time cybersecurity roles</p></div></article><p class="evidence-note">Academic project: <a href="#project-netsec-001">Security Testing of Public Wi-Fi — Evil Twin &amp; MITM →</a><br>Co-author / Student Researcher · DGT Showcase 2025 poster · Controlled-lab evidence summary.</p></div></section>
+<section id="contact" class="section"><div class="container"><div class="section-header"><div><span class="section-number">09</span><h2>CONTACT</h2></div><span class="section-command">NAPOL / TANAPOL CHUMTAKHOB</span></div><div class="contact-grid"><div><span class="availability green">OPEN TO WORK</span><h3>Let’s talk security.</h3><p class="prose">For full-time opportunities in security engineering, IAM, application security, cybersecurity consulting, or technical GRC, connect with me on LinkedIn.</p></div><div class="hero-actions"><a class="button primary" href="https://www.linkedin.com/in/tanapol-chumtakhob-a10503273/" target="_blank" rel="noopener noreferrer">CONNECT ON LINKEDIN ↗</a><a class="button secondary" href="https://github.com/napol-n" target="_blank" rel="noopener noreferrer">VIEW GITHUB ↗</a></div></div></div></section>
   </main>
 
 
 
   <footer>
-
     <div class="container footer-content">
-
-      <div>
-        NAPOL.SEC //
-        <span>SECURITY PORTFOLIO</span>
-      </div>
-
-      <div>
-        SYSTEM_STATUS:
-        <span class="green">
-          OPERATIONAL
-        </span>
-      </div>
-
+      <div><a class="logo" href="#home">NAPOL<span>.SEC</span></a><p>Security Engineering · IAM · AppSec</p></div>
+      <nav class="evidence-links" aria-label="Footer"><a href="https://github.com/napol-n" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/tanapol-chumtakhob-a10503273/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a></nav>
     </div>
-
   </footer>
-
-
-  <script src="scripts/main.js"></script>
+  <noscript><p class="container evidence-note">Project summaries and evidence links are available below each project title. Enable JavaScript for expanded case studies.</p></noscript>
+  <script src="scripts/main.js" defer></script>
 
 </body>
 </html>

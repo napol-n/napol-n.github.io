@@ -1,0 +1,7 @@
+# GitHub Pages serves the static portfolio. Keep local working material out of Jekyll output.
+exclude:
+  - osint-tiktok-investigation
+  - docs
+  - scripts/validate.py
+  - scripts/update_fallbacks.py
+  - README.md

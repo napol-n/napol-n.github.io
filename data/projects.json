@@ -1,69 +1,437 @@
 [
   {
     "id": "SEC-ENG-001",
-    "status": "ACTIVE",
+    "repo": "security-engineering-automation-lab",
     "title": "Security Engineering & Automation Lab",
-    "description": "Hands-on security engineering lab covering Linux security, centralized logging, detection engineering and security automation.",
+    "description": "Investigated controlled service failures, restored least-privilege operation, and automated health and heartbeat checks.",
+    "why": "Make recovery measurable across network, process, permissions, and application layers.",
     "technologies": [
       "Linux",
-      "Bash",
       "Python",
-      "Detection",
-      "Automation"
+      "Docker",
+      "Nginx",
+      "Log analysis"
     ],
-    "url": "https://github.com/napol-n/security-engineering-automation-lab"
+    "architecture": "Nginx reverse proxy → Docker network → Python backend; a separate non-root Linux service produces heartbeat logs.",
+    "implemented": [
+      "Traced Nginx’s wrong upstream (app:8001) to the healthy backend (app:8000), corrected the configuration, and verified HTTP 200.",
+      "Diagnosed root:root mode 700 on the log directory blocking secsvc traversal; restored secsvc ownership and mode 750.",
+      "Recovered a stopped application while its container remained running; verified new heartbeat records.",
+      "Built scripts/health_check.py and scripts/log_analyzer.py to check HTTP/JSON health and heartbeat UID, status, gaps, and freshness."
+    ],
+    "securityDecisions": "Restore intended directory ownership and permissions; avoid broad permissions as a workaround.",
+    "validation": "Evidence records before/after failures and recovery. Healthy, synthetic anomalous, and malformed log samples exercise success and failure exits.",
+    "lessons": "Container Running ≠ Process Running ≠ Service Healthy. Verify the behavior of the service, then automate the checks.",
+    "limitations": "Local lab checks; no centralized collection, alert delivery, or production monitoring claim.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab"
+      },
+      {
+        "label": "INCIDENT EVIDENCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day01-network-service-incident.md"
+      },
+      {
+        "label": "AUTOMATION",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/scripts/log_analyzer.py"
+      },
+      {
+        "label": "PERMISSION EVIDENCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day02-linux-permission-incident.md"
+      }
+    ],
+    "status": "DOCUMENTED",
+    "result": "HTTP 502 → 200. Non-root log access restored. Process recovery verified through fresh heartbeats."
   },
   {
     "id": "APPSEC-001",
-    "status": "ACTIVE",
+    "repo": "application-security-vulnerability-management-lab",
+    "status": "COMPLETE",
     "title": "Application Security & Vulnerability Management Lab",
-    "description": "Application security lab focused on vulnerability discovery, validation, remediation and secure engineering practices.",
+    "description": "Completed a ten-lab assessment of a local OWASP Juice Shop instance, from discovery and validation through risk prioritization, source remediation, and formal retesting.",
+    "why": "Trace each finding to demonstrated impact, a control decision, and its final disposition.",
+    "result": "10/10 labs complete. Three source fixes passed formal retests; five findings remain outstanding with remediation deferred.",
     "technologies": [
-      "AppSec",
-      "OWASP",
-      "Vulnerability Management",
-      "Web Security"
+      "Burp Suite",
+      "HTTP / APIs",
+      "Access control",
+      "SQL injection",
+      "DOM XSS",
+      "Retesting"
     ],
-    "url": "#"
+    "metrics": [
+      {
+        "value": "10/10",
+        "label": "Labs complete"
+      },
+      {
+        "value": "8",
+        "label": "Confirmed findings"
+      },
+      {
+        "value": "6 / 2",
+        "label": "Medium / Low"
+      }
+    ],
+    "disposition": {
+      "passed": 3,
+      "deferred": 5
+    },
+    "implemented": [
+      "Assessed authentication, sessions, access control, injection, XSS, and APIs in a controlled local environment.",
+      "Triaged eight findings, prioritized risk, and implemented three source remediations in a separate corrected build.",
+      "Verified build identity, legitimate functionality, security boundaries, and final finding disposition."
+    ],
+    "validation": "Lab 10 records three passing formal retests and five deferred findings. Historical severities: High 0, Medium 6, Low 2.",
+    "limitations": "Local authorized lab; results apply to the tested builds. Project completion does not mean every vulnerability is fixed. Some supporting artifacts for L03-02 and L07-01 remain publication gaps.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/application-security-vulnerability-management-lab"
+      },
+      {
+        "label": "FINAL REPORT",
+        "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/notes/final-vulnerability-report.md"
+      },
+      {
+        "label": "DISPOSITION",
+        "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/notes/final-disposition-matrix.md"
+      }
+    ],
+    "caseSections": [
+      {
+        "title": "Objective & implementation",
+        "text": "Discover → validate → assess impact → prioritize → remediate → retest → record evidence and final disposition. Source changes in a separate corrected Juice Shop v20.2.0 build added backend role enforcement, parameter binding, and text-only rendering.",
+        "links": [
+          {
+            "label": "IMPLEMENTATION RECORD",
+            "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-09-risk-prioritization-remediation/notes/implementation-record.md"
+          }
+        ]
+      },
+      {
+        "title": "L04-02 · Backend authorization",
+        "text": "Historically, the customer-facing UI denied Administration access while the backend returned protected account records to an ordinary customer. Retesting confirmed administrator HTTP 200 with records, customer HTTP 403 without records, and unauthenticated HTTP 401 without records.",
+        "items": [
+          "Result: Remediated — Retest Passed · Medium.",
+          "Security lesson: UI restrictions do not replace backend function-level authorization."
+        ],
+        "links": [
+          {
+            "label": "BFLA RETEST EVIDENCE",
+            "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/evidence/l04-02/retest-summary.json"
+          }
+        ]
+      },
+      {
+        "title": "L05-01 · SQL injection remediation",
+        "text": "Historical dataset comparison showed 46 normal rows versus 56 rows under Boolean manipulation, exposing ten logically deleted products. After parameter binding, legitimate search worked; no-match and historical TRUE/FALSE cases produced the same empty product-identity set. No deleted products or SQL diagnostics were exposed.",
+        "items": [
+          "Result: Remediated — Retest Passed · Medium.",
+          "Security lesson: HTTP 200 alone is not proof of remediation. Compare query behavior and returned identities."
+        ],
+        "links": [
+          {
+            "label": "SQL INJECTION RETEST EVIDENCE",
+            "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/evidence/l05-01/retest-summary.json"
+          }
+        ]
+      },
+      {
+        "title": "L06-01 · DOM XSS remediation",
+        "text": "Historical validation demonstrated HTML parsing, event-bearing image creation, JavaScript execution, and DOM modification. With text-only rendering, legitimate headings still worked, markup remained literal text, no B or IMG child appeared, the execution marker was absent, and the DOM-impact marker stayed unchanged.",
+        "items": [
+          "Result: Remediated — Retest Passed · Medium.",
+          "Security lesson: inspect DOM and execution state, beyond whether a dialog appears."
+        ],
+        "links": [
+          {
+            "label": "BEFORE / AFTER RESULTS",
+            "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/notes/pre-post-comparison.md"
+          }
+        ]
+      },
+      {
+        "title": "Five findings · Remediation deferred",
+        "items": [
+          "L03-01 · Authentication Token Remains Valid After Logout — Medium",
+          "L03-02 · Password-Derived MD5 Digest Exposed in JWT — Medium",
+          "L03-03 · Account Enumeration Through Password Recovery — Low",
+          "L04-01 · Basket BOLA — Medium",
+          "L07-01 · Feedback UserId BOPLA — Low"
+        ],
+        "text": "No remediation was implemented for these findings in the delivery batch. They were not assigned an artificial retest pass or failure.",
+        "links": [
+          {
+            "label": "FINAL DISPOSITION MATRIX",
+            "url": "https://github.com/napol-n/application-security-vulnerability-management-lab/blob/main/labs/lab-10-retest-final-report/notes/final-disposition-matrix.md"
+          }
+        ]
+      },
+      {
+        "title": "Scope & evidence limits",
+        "text": "Local authorized lab; no production assessment or broader compromise is claimed. The final report retains supporting-publication gaps for L03-02 and L07-01. Historical severity and present remediation state are separate."
+      }
+    ]
   },
   {
     "id": "IAM-001",
-    "status": "COMPLETE",
+    "repo": "okta-iam-automation-lab",
     "title": "Okta IAM Automation Lab",
-    "description": "Identity and access management lab covering user lifecycle, RBAC, SAML SSO, MFA and IAM administration.",
+    "description": "Automated Joiner–Mover–Leaver workflows with scoped OAuth access and private_key_jwt authentication.",
+    "why": "Remove obsolete access as identities change roles or leave.",
     "technologies": [
       "Okta",
-      "IAM",
-      "SAML",
-      "MFA",
-      "RBAC"
+      "Python",
+      "OAuth 2.0",
+      "RSA / JWK",
+      "MFA"
     ],
-    "url": "https://github.com/napol-n/okta-iam-automation-lab"
+    "architecture": "Python → OAuth service app → Okta Management API → users, groups, and lifecycle operations → System Log.",
+    "implemented": [
+      "Created a lab identity with Engineering group access.",
+      "Added Security membership, then removed Engineering access.",
+      "Deactivated the identity; documented lifecycle, session, and Okta Verify events."
+    ],
+    "securityDecisions": "Use Client Credentials with RSA-signed assertions, scoped API permissions and administrative resource restrictions; keep keys outside Git.",
+    "validation": "The evidence index documents successful creation, group changes, deactivation, session clearing, and MFA events.",
+    "lessons": "A valid token still needs the appropriate administrative authorization and resource scope.",
+    "limitations": "Lab scripts; dry runs, robust idempotency, recovery, and automated tests remain future improvements.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/okta-iam-automation-lab"
+      },
+      {
+        "label": "IMPLEMENTATION",
+        "url": "https://github.com/napol-n/okta-iam-automation-lab/blob/main/src/move_user.py"
+      },
+      {
+        "label": "EVIDENCE",
+        "url": "https://github.com/napol-n/okta-iam-automation-lab/blob/main/evidence/README.md"
+      },
+      {
+        "label": "ARCHITECTURE",
+        "url": "https://github.com/napol-n/okta-iam-automation-lab/blob/main/docs/architecture.md"
+      }
+    ],
+    "status": "COMPLETE",
+    "result": "Joiner, mover, deactivation, session clearing, and Okta Verify events documented in the System Log."
   },
   {
     "id": "IAM-002",
-    "status": "COMPLETE",
-    "title": "Terraform Entra IAM Lifecycle Lab",
-    "description": "Infrastructure-as-Code lab for Microsoft Entra ID identity lifecycle management using Terraform.",
+    "repo": "entra-iam-automation-lab",
+    "title": "Microsoft Entra IAM Automation Lab",
+    "description": "Implemented identity lifecycle operations through Microsoft Graph using a certificate-authenticated workload identity.",
+    "why": "Make provisioning and offboarding auditable through application identity and directory state.",
+    "technologies": [
+      "Entra ID",
+      "Microsoft Graph",
+      "Python",
+      "MSAL",
+      "Certificates"
+    ],
+    "architecture": "Python → MSAL certificate authentication → service principal → Microsoft Graph → Entra audit logs.",
+    "implemented": [
+      "Created users and assigned Engineering membership.",
+      "Updated role attributes and moved access to Security.",
+      "Disabled accounts, revoked sign-in sessions, removed group access, and read back final state."
+    ],
+    "securityDecisions": "Separate certificate authentication from Graph application permissions and administrator consent. Keep local credentials out of version control.",
+    "validation": "README records Graph read-back and audit validation; committed screenshots cover group assignment, mover actions, disablement, and session revocation.",
+    "lessons": "Offboarding needs account, session, and membership checks.",
+    "limitations": "Lab scripts need further hardening. Some read-back helpers contain unresolved variable/URL issues; documented audit results do not establish that every current script runs unchanged.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/entra-iam-automation-lab"
+      },
+      {
+        "label": "IMPLEMENTATION",
+        "url": "https://github.com/napol-n/entra-iam-automation-lab/blob/main/src/revoke_sessions.py"
+      },
+      {
+        "label": "EVIDENCE",
+        "url": "https://github.com/napol-n/entra-iam-automation-lab/blob/main/evidence/screenshots/03b-leaver-revoke-sessions.png"
+      },
+      {
+        "label": "ARCHITECTURE",
+        "url": "https://github.com/napol-n/entra-iam-automation-lab/blob/main/README.md"
+      }
+    ],
+    "status": "DOCUMENTED",
+    "result": "Lifecycle actions attributed to the workload identity in Entra audit logs; account disablement and access removal documented."
+  },
+  {
+    "id": "IAM-003",
+    "repo": "terraform-entra-iam-lifecycle-lab",
+    "title": "Terraform Microsoft Entra IAM Lifecycle Lab",
+    "description": "Managed directory resources as code, with documented lifecycle transitions, drift remediation, and resource import.",
+    "why": "Keep intended access configuration reviewable and detect manual changes.",
     "technologies": [
       "Terraform",
       "Entra ID",
-      "IAM",
+      "AzureAD provider",
+      "Microsoft Graph",
       "IaC"
     ],
-    "url": "https://github.com/napol-n/terraform-entra-iam-lifecycle-lab"
+    "architecture": "Terraform → AzureAD provider → certificate-authenticated service principal → Microsoft Graph → Entra resources.",
+    "implemented": [
+      "Provisioned groups and a lab user; documented Joiner–Mover–Leaver state changes.",
+      "Detected a manual group-description change and restored the declared value.",
+      "Imported an existing group into Terraform state."
+    ],
+    "securityDecisions": "Retain the disabled user while removing access. Exclude state, variable values, and authentication material from Git.",
+    "validation": "The README and evidence index document drift detection, remediation, import, and subsequent no-change plans.",
+    "lessons": "Authentication success does not imply Graph authorization; state may contain sensitive values.",
+    "limitations": "Current configuration captures the final disabled-user state; earlier membership transitions are documented in evidence.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/terraform-entra-iam-lifecycle-lab"
+      },
+      {
+        "label": "IMPLEMENTATION",
+        "url": "https://github.com/napol-n/terraform-entra-iam-lifecycle-lab/blob/main/main.tf"
+      },
+      {
+        "label": "EVIDENCE",
+        "url": "https://github.com/napol-n/terraform-entra-iam-lifecycle-lab/blob/main/evidence/README.md"
+      },
+      {
+        "label": "ARCHITECTURE",
+        "url": "https://github.com/napol-n/terraform-entra-iam-lifecycle-lab/blob/main/README.md"
+      }
+    ],
+    "status": "DOCUMENTED",
+    "result": "Drift repaired and an existing group adopted; subsequent plans recorded no changes."
   },
   {
     "id": "NETSEC-001",
+    "kind": "Academic research",
     "status": "COMPLETE",
-    "title": "Public Wi-Fi Evil Twin & MITM Research",
-    "description": "Academic penetration testing project studying Evil Twin attacks, man-in-the-middle techniques and public Wi-Fi security risks.",
-    "technologies": [
-      "Wi-Fi Security",
-      "MITM",
-      "Wireshark",
-      "Network Security"
+    "title": "Security Testing of Public Wi-Fi",
+    "subtitle": "Evil Twin & Man-in-the-Middle Research",
+    "category": "Wireless Security / Network Security / Academic Security Research",
+    "institution": "Suranaree University of Technology",
+    "role": "Co-author / Student Researcher",
+    "description": "Controlled wireless-security research evaluating rogue access points, MITM techniques, traffic visibility, and user behavior in public Wi-Fi scenarios.",
+    "scope": "Featured scope: controlled lab experiments on researcher-owned Android, iOS, and Windows test devices.",
+    "why": "Understand both the mechanics of wireless impersonation and the security controls that constrain interception.",
+    "architecture": "Test device → rogue Evil Twin AP → researcher-controlled analysis host → destination services. Wireshark captures traffic; Burp Suite and mitmproxy support separate proxy-based experiments.",
+    "implemented": [
+      "Co-authored the academic study and DGT Showcase 2025 poster.",
+      "Studied rogue AP connection behavior, deauthentication, and a simulated captive portal.",
+      "Analyzed HTTP, DNS, and TLS behavior and compared interception outcomes against HSTS, certificate validation, and pinning."
     ],
-    "url": "#"
+    "securityDecisions": "Limit this case study to the article’s controlled-lab subset. Retain TLS limitations and omit identifiers, raw captures, and credential values.",
+    "validation": "Research article Figures 1–5 and Tables 2–6; DGT Showcase 2025 methods, tools, and results table. Findings below are reported observations, not a new execution of the experiments.",
+    "lessons": "A device joining a rogue AP does not imply that protected application content becomes readable. Network trust, transport protections, and user decisions must be evaluated separately.",
+    "limitations": "Qualitative outcomes from the documented test setup. No general success rate, universal device behavior, TLS break, or professional engagement is claimed.",
+    "technologies": [
+      "Kali Linux",
+      "Wifiphisher",
+      "Wireshark",
+      "Burp Suite",
+      "mitmproxy",
+      "HTTP / DNS / TLS"
+    ],
+    "links": [
+      {
+        "label": "RESEARCH SUMMARY",
+        "url": "evidence/netsec-001.html"
+      }
+    ],
+    "caseSections": [
+      {
+        "title": "Objective",
+        "text": "Evaluate how a rogue access point affects connection behavior, what network traffic is visible, and which application security controls limit MITM techniques."
+      },
+      {
+        "title": "Test environment",
+        "text": "Researcher-owned Android, iOS, and Windows devices; a legitimate Wi-Fi network; a rogue/fake AP; and a Kali Linux analysis environment. The article describes separate packet-capture and intercepting-proxy experiments; it does not establish one fixed serial chain through every tool."
+      },
+      {
+        "title": "Traffic analysis",
+        "text": "Table 4 reports plaintext HTTP and DNS visibility, while the tested TLS traffic exposed domain/SNI metadata without readable protected content. Table 5 records HTTP interception and modification with Burp Suite. Table 6 records mitmproxy flows and certificate-related failures. Packet capture is not evidence of HTTPS decryption."
+      },
+      {
+        "title": "Security controls",
+        "text": "The article reports that HSTS prevented the tested downgrade path, and certificate pinning blocked the tested app interception. Some mitmproxy sessions failed when clients rejected the certificate. These are different controls: HSTS enforces HTTPS use; certificate validation and pinning govern trust in the endpoint. No TLS cryptographic break is demonstrated."
+      },
+      {
+        "title": "Ethics & scope",
+        "text": "Only the controlled-lab subset on researcher-owned devices is featured here. This is academic research and hands-on network security testing. Collaborator details, contact addresses, network identifiers, credential values, and raw captures are excluded. The summary does not present field-test results or claim a professional penetration-testing engagement."
+      },
+      {
+        "title": "Evidence",
+        "text": "Read the sanitized evidence summary for the article figure/table references and the DGT Showcase 2025 poster mapping. Original documents remain outside the public site.",
+        "links": [
+          {
+            "label": "RESEARCH ARTICLE SUMMARY",
+            "url": "evidence/netsec-001.html#article"
+          },
+          {
+            "label": "DGT SHOWCASE SUMMARY",
+            "url": "evidence/netsec-001.html#showcase"
+          },
+          {
+            "label": "ARCHITECTURE SUMMARY",
+            "url": "evidence/netsec-001.html#architecture"
+          },
+          {
+            "label": "EXPERIMENT RESULTS",
+            "url": "evidence/netsec-001.html#results"
+          }
+        ]
+      }
+    ],
+    "result": "Plaintext HTTP and network metadata were visible; HTTPS trust controls constrained interception in the tested setup."
+  },
+  {
+    "id": "GRC-001",
+    "repo": "iso27001-secure-cicd",
+    "title": "ISO 27001 · Secure CI/CD",
+    "description": "Small educational implementation connecting a GitHub Actions security gate to an ISO/IEC 27001 control mapping.",
+    "why": "Connect an executable development control to technical governance evidence.",
+    "technologies": [
+      "Python",
+      "GitHub Actions",
+      "Secret scanning",
+      "Control mapping"
+    ],
+    "architecture": "Push / pull request → GitHub Actions → Python scanner → pass or fail; GRC documents connect risk, control, and evidence.",
+    "implemented": [
+      "Scanned Python files under app/ for credential-assignment patterns.",
+      "Made detected matches return a failing exit code in CI.",
+      "Documented scope, assets, risk treatment, and Annex A control mapping."
+    ],
+    "securityDecisions": "Keep the control objective explicit: detecting selected hardcoded credential patterns in application source.",
+    "validation": "Repository includes clean-pass and detection-failure screenshots; the written test-results document is partial.",
+    "lessons": "A security control is easier to review when its implementation and evidence trace back to a risk.",
+    "limitations": "Educational regex scanner limited to selected patterns in app/*.py; partial written test results. This is a technical governance lab, not professional ISO implementation, consulting, or certification.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/iso27001-secure-cicd"
+      },
+      {
+        "label": "IMPLEMENTATION",
+        "url": "https://github.com/napol-n/iso27001-secure-cicd/blob/main/security/secret_scan.py"
+      },
+      {
+        "label": "EVIDENCE",
+        "url": "https://github.com/napol-n/iso27001-secure-cicd/blob/main/evidence/screenshots/02-secret-detection-fail.png"
+      },
+      {
+        "label": "ARCHITECTURE",
+        "url": "https://github.com/napol-n/iso27001-secure-cicd/blob/main/grc/control-mapping.md"
+      }
+    ],
+    "status": "DOCUMENTED",
+    "kind": "SECONDARY LAB",
+    "secondary": true,
+    "result": "A Python pattern check fails CI on selected credential assignments; the repository maps this control to a documented risk."
   }
 ]

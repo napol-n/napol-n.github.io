@@ -1,0 +1,50 @@
+[
+  {
+    "id": "DFIR / HTB",
+    "title": "Brutus · Unix log analysis",
+    "description": "Investigation notes on SSH authentication records, session correlation, and attacker activity in a training scenario.",
+    "links": [
+      {
+        "label": "READ WRITE-UP",
+        "url": "https://github.com/napol-n/WriteUp/blob/main/HTB_%20Sherlocks/Brutus.md"
+      }
+    ]
+  },
+  {
+    "id": "DFIR / BTLO",
+    "title": "Nonyx · Memory forensics",
+    "description": "Volatility-based study of injected code and system hooks in a BlackEnergy training memory image.",
+    "links": [
+      {
+        "label": "READ WRITE-UP",
+        "url": "https://github.com/napol-n/WriteUp/blob/main/BTLO%20%28BLUETEAMLABONLINE%29/Nonyx.md"
+      }
+    ]
+  },
+  {
+    "id": "NETWORK / CYBERDEFENDERS",
+    "title": "WebStrike · Web attack investigation",
+    "description": "Wireshark investigation notes tracing an uploaded web shell and related HTTP activity in a supplied PCAP.",
+    "links": [
+      {
+        "label": "READ WRITE-UP",
+        "url": "https://github.com/napol-n/WriteUp/blob/main/CYBERDEFENDERS/WebStrike%20Lab.md"
+      }
+    ]
+  },
+  {
+    "id": "NETWORK / LAB GUIDE",
+    "title": "DNS spoofing & TLS inspection",
+    "description": "Documented dnsmasq-based DNS redirection and browser-session-key TLS inspection in controlled lab environments.",
+    "links": [
+      {
+        "label": "DNS GUIDE",
+        "url": "https://github.com/napol-n/DNS-Spoofing/blob/main/README.md"
+      },
+      {
+        "label": "TLS GUIDE",
+        "url": "https://github.com/napol-n/WireSharkTLS/blob/main/README.md"
+      }
+    ]
+  }
+]
