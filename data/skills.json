@@ -2,7 +2,7 @@
   {
     "id": "SEC-ENG",
     "title": "Security engineering",
-    "description": "Linux permissions, process troubleshooting, Docker networking, Nginx, HTTP health checks, and log analysis.",
+    "description": "Linux permissions, process troubleshooting, Docker networking, Nginx, HTTP service validation, Python automation, and log analysis.",
     "links": [
       {
         "label": "ENGINEERING LAB",
@@ -39,7 +39,7 @@
   {
     "id": "SECOPS",
     "title": "Security operations",
-    "description": "L1 triage, SIEM and endpoint telemetry, Windows logs, Wireshark, escalation, and incident documentation.",
+    "description": "L1 alert triage, Elastic / Splunk SIEM, SentinelOne endpoint telemetry, Windows Event Logs, FortiGate, Wireshark, escalation, and incident documentation.",
     "links": [
       {
         "label": "SOC EXPERIENCE",
@@ -58,7 +58,7 @@
   {
     "id": "AUTOMATION",
     "title": "Automation & infrastructure",
-    "description": "Python, Terraform, Git, GitHub Actions, and shell-based Linux investigation.",
+    "description": "Python, Bash, Terraform, Git, GitHub Actions, API automation, and Linux-based security workflows.",
     "links": [
       {
         "label": "PYTHON SOURCE",
