@@ -12,6 +12,18 @@
     "url": "https://github.com/napol-n"
   },
   {
+    "name": "GitBook Docs",
+    "id": "DOCS",
+    "description": "Structured notes and write-ups from defensive security, DFIR, network analysis, and controlled cybersecurity training labs.",
+    "url": "https://napol.gitbook.io/napol-docs"
+  },
+  {
+    "name": "Medium",
+    "id": "MED",
+    "description": "Cybersecurity learning articles and hands-on write-ups covering SOC operations, network monitoring, threat hunting, and DFIR.",
+    "url": "https://medium.com/@hvsent00"
+  },
+  {
     "name": "Hack The Box",
     "id": "HTB",
     "description": "Public training profile. Related Sherlock investigations are linked in the write-up collection.",
