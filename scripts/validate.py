@@ -60,6 +60,11 @@ def main():
         data = json.loads(path.read_text())
         references.extend((ROOT / 'index.html', url) for url in walk(data))
         if path.stem == 'projects':
+            project_ids = [p['id'] for p in data]
+            assert len(project_ids) == len(set(project_ids)), 'Duplicate project IDs'
+            index = (ROOT / 'index.html').read_text()
+            count = re.search(r'<strong id="project-count">(\d+)</strong>', index)
+            assert count and count[1] == f'{len(data):02d}', 'Stale project count'
             for p in data:
                 project_id = 'project-' + p['id'].lower()
                 if project_id not in page.ids: page.ids.append(project_id)

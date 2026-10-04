@@ -1,3 +1,80 @@
+# October 2026 portfolio audit — 2026-10-04
+
+This entry supersedes older current-state descriptions below; historical source
+ledgers and evidence remain intact. The checkout began clean at `b227b43`
+(`portfolio: refine cybersecurity skill descriptions`), matching GitHub main and
+the fetched live HTML. No staging, commit, push, or deployment was performed.
+
+## Audit before editing
+
+Inspected index.html; all five data JSON files; main.js; fallback generation and
+validation scripts; console.css; README; both maintenance documents; the sole
+public evidence page; tracked inventory; Git ignore and Jekyll exclusions.
+
+- Static, no-framework GitHub Pages architecture; five independently fetched JSON
+  collections, with identity/experience/education/contact in semantic HTML.
+- DOM text-node rendering and constrained evidence destinations; three primary
+  project links, additional evidence inside native details/summary disclosures.
+- JSON order drives cards. Initial seven-project order: Security Engineering,
+  AppSec, Okta, Entra automation, Terraform Entra, Wi-Fi, Secure CI/CD.
+- Generated compact summaries survive disabled JS or failed JSON. JS derives the
+  project count, but the generator previously left the static count manual.
+- Existing navy/teal console styling, responsive grids, visible focus, skip link,
+  reduced-motion rules, mobile Menu/Escape and target-focus behavior retained.
+  Current CSS includes subtle ambient motion; older motionless-background notes
+  below describe an earlier version.
+- Validator checks content, destinations, assets, attributes, credentials patterns,
+  and fallback content. Added explicit unique-project-ID and derived-count checks;
+  its former rendered-ID check alone did not reject duplicate JSON project IDs.
+- Evidence strategy retained: public repository artifacts linked, sanitized Wi-Fi
+  summary local, private source materials excluded. No upstream raw artifacts copied.
+
+## Fresh Cloud/Kubernetes source review
+
+Inspected [repository snapshot](https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/tree/6869140199815d008f47dbf70ebb953582296304),
+SHA `6869140199815d008f47dbf70ebb953582296304`: root README, Labs 01–10 READMEs,
+assessment/remediation notes, manifests, Rego policy, GitHub Actions workflow,
+selected baseline/final evidence, and Lab 10's five captures, final assessment,
+control matrix and residual-risk review. These are reviewed records, not lab tests
+rerun for this portfolio update. The root progress table records all ten complete;
+Lab 09's documentation also retains its human-review status.
+
+Verified conclusions used for CLOUD-001:
+
+- Docker hardening, local kind deployment and explicit workload security controls.
+- Terraform/IaC scanning and remediation without AWS deployment; residual exceptions.
+- Container vulnerability triage/remediation with unresolved findings retained.
+- CI container findings gate excludes unfixed findings; IaC findings are report-only.
+  Current workflow configures Conftest/OPA Deployment validation. No hosted success
+  of the later policy job is inferred from the earlier three-job screenshot.
+- Lab 10 configuration capture retains workload hardening. Earlier Lab 03 evidence
+  supplies runtime checks; these are distinct evidence sets.
+- Policy regression records 10 passes and exit 0. Lab 10's tool versions differ
+  from Lab 09 and its transcript omits the exact invocation/target.
+- Six tested RBAC queries denied for one lab identity; not zero API access or a
+  cluster-wide authorization audit.
+- Authorized path HTTP 200; unauthorized path times out with curl exit 28. This
+  establishes the two tested ingress paths, not egress or application authorization.
+- Residual risk and image identity boundaries stay explicit. Deployment of the
+  Lab 05 remediated image to the main Kubernetes workload is not established.
+
+## Editorial changes
+
+Use the requested order: Cloud/Kubernetes → AppSec → Security Engineering → Okta
+→ Entra → Terraform Entra → Wi-Fi → Secure CI/CD. Preserve all seven prior project
+records exactly, including AppSec's eight historical findings and 3 passed / 5
+deferred disposition. Preserve the complete SOC internship section unchanged.
+
+Hero, SEO/social metadata, profile, About, activity, contact and footer emphasize
+Security Engineering, AppSec/Product Security and Cloud/Kubernetes, with cyber
+defense/SOC visible and IAM/technical GRC supporting. Skills follow recruiter
+relevance; add CLOUD / K8S and evidence links from SEC-ENG and AUTOMATION.
+Count and fallback summaries derive from JSON. No stylesheet or runtime JS change
+was needed. No production, enterprise Kubernetes, cloud deployment, zero-risk,
+zero-vulnerability, required-merge-check, or professional pentesting claim added.
+
+---
+
 # Portfolio v2 audit — 2026-09-21
 
 This section supersedes the historical audit below. The working tree already

@@ -45,11 +45,14 @@ Research projects can use `caseSections`, `kind`, `status`, `institution`, and
 
 ## Portfolio v2 maintenance
 
-Seven projects are ordered by the engineering/evidence narrative. `status` describes
+Eight projects are ordered by the engineering/evidence narrative: Cloud & Kubernetes,
+AppSec, Security Engineering, Okta, Entra automation, Terraform Entra, Wi-Fi research,
+then Secure CI/CD. Cloud/Kubernetes and AppSec lead with control validation,
+remediation, and explicit residual findings. `status` describes
 project scope; AppSec `disposition` describes unresolved versus remediated findings.
 The renderer uses DOM text nodes and validates destination protocols.
 
-After editing JSON, refresh the compact static summaries in index.html:
+After editing JSON, refresh the compact static summaries and derived project count in index.html:
 
 ```sh
 python3 scripts/update_fallbacks.py
@@ -65,5 +68,10 @@ investigation directory is also ignored by Git and is not portfolio evidence.
 Any future custom raw-upload workflow must preserve these exclusions.
 
 Preview review: Home → Experience → Projects → expanded case study → evidence,
-then LinkedIn. Check mobile Menu and Escape, and AppSec's 3 passed / 5 deferred
-disposition. No deployment is part of this upgrade.
+then LinkedIn. Check at 320, 390, 768 and 1440 px, including mobile Menu / Escape,
+keyboard focus, disclosures, reduced motion, no-JavaScript and failed-fetch fallbacks.
+Verify Cloud/Kubernetes's final assessment and regression links, eight projects in
+JSON order, and AppSec's 3 passed / 5 deferred disposition. The validator checks
+unique project IDs, count, local anchors, and fallback synchronization. External
+checks distinguish missing targets from blocked or unverified requests.
+No deployment is part of this upgrade.

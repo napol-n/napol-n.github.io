@@ -2,26 +2,15 @@
   {
     "id": "SEC-ENG",
     "title": "Security engineering",
-    "description": "Linux permissions, process troubleshooting, Docker networking, Nginx, HTTP service validation, Python automation, and log analysis.",
+    "description": "Linux permissions, service troubleshooting, Docker networking, HTTP validation, and control verification through baseline comparison, remediation, and regression checks.",
     "links": [
       {
         "label": "ENGINEERING LAB",
         "url": "#project-sec-eng-001"
-      }
-    ]
-  },
-  {
-    "id": "IAM",
-    "title": "Identity & access",
-    "description": "Okta, Entra ID, JML, group-based access, MFA, OAuth 2.0, Microsoft Graph, and workload identities.",
-    "links": [
-      {
-        "label": "OKTA",
-        "url": "#project-iam-001"
       },
       {
-        "label": "ENTRA ID",
-        "url": "#project-iam-002"
+        "label": "CONTROL VALIDATION",
+        "url": "#project-cloud-001"
       }
     ]
   },
@@ -33,6 +22,17 @@
       {
         "label": "ASSESSMENT & RETESTS",
         "url": "#project-appsec-001"
+      }
+    ]
+  },
+  {
+    "id": "CLOUD / K8S",
+    "title": "Cloud & Kubernetes security",
+    "description": "Docker hardening, Kubernetes workload security, RBAC, NetworkPolicy, Trivy container and Terraform/IaC scanning, GitHub Actions checks, and Policy as Code with remediation and regression validation. Local Kubernetes and static IaC scope.",
+    "links": [
+      {
+        "label": "CLOUD / K8S LAB",
+        "url": "#project-cloud-001"
       }
     ]
   },
@@ -56,9 +56,24 @@
     ]
   },
   {
+    "id": "IAM",
+    "title": "Identity & access",
+    "description": "Okta, Entra ID, JML, group-based access, MFA, OAuth 2.0, Microsoft Graph, and workload identities.",
+    "links": [
+      {
+        "label": "OKTA",
+        "url": "#project-iam-001"
+      },
+      {
+        "label": "ENTRA ID",
+        "url": "#project-iam-002"
+      }
+    ]
+  },
+  {
     "id": "AUTOMATION",
-    "title": "Automation & infrastructure",
-    "description": "Python, Bash, Terraform, Git, GitHub Actions, API automation, and Linux-based security workflows.",
+    "title": "Automation & IaC",
+    "description": "Python and API automation, Terraform-managed identity, GitHub Actions validation, and Conftest / OPA policy checks that turn documented security requirements into repeatable checks.",
     "links": [
       {
         "label": "PYTHON SOURCE",
@@ -67,12 +82,16 @@
       {
         "label": "TERRAFORM",
         "url": "#project-iam-003"
+      },
+      {
+        "label": "CI & POLICY CHECKS",
+        "url": "#project-cloud-001"
       }
     ]
   },
   {
     "id": "GRC",
-    "title": "Technical governance",
+    "title": "Technical GRC",
     "description": "Project scope, asset inventory, risk register, risk treatment, and technical control mapping to ISO/IEC 27001.",
     "links": [
       {

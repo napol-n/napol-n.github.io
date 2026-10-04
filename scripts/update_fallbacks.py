@@ -31,6 +31,10 @@ def render(name, items):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');args=parser.parse_args()
     path=ROOT/'index.html';original=path.read_text();updated=original
+    projects=json.loads((ROOT/'data/projects.json').read_text())
+    updated,count=re.subn(r'(<strong id="project-count">)\d+(</strong>)',
+                         lambda m:m[1]+f'{len(projects):02d}'+m[2],updated)
+    assert count==1, 'Missing project count'
     for name in ['projects','skills','labs','platforms','certifications']:
         body=render(name,json.loads((ROOT/'data'/f'{name}.json').read_text()))
         pattern=rf'(<!-- fallback:{name}:start -->).*?(<!-- fallback:{name}:end -->)'

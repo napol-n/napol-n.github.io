@@ -1,3 +1,76 @@
+# October 2026 validation — 2026-10-04
+
+Current results supersede older runs below. Changes remain unstaged and uncommitted;
+no push or deployment occurred. The starting checkout was clean.
+
+## Scope
+
+Changed: index.html, data/projects.json, data/skills.json, README.md,
+scripts/update_fallbacks.py, scripts/validate.py, docs/AUDIT.md and this file.
+CSS, runtime JavaScript, existing research evidence, labs, certifications and
+platform data are unchanged. All seven pre-existing project JSON records and the
+entire SOC experience section match HEAD exactly.
+
+## Commands and results
+
+- `python3 scripts/update_fallbacks.py` — generated summaries and count 08.
+- `python3 scripts/update_fallbacks.py --check` — synchronization passes.
+- `python3 scripts/validate.py` — five JSON files, unique project IDs, derived
+  count, local/evidence/navigation anchors, assets, favicon, attributes and
+  fallback synchronization pass.
+- `node --check scripts/main.js` — passes.
+- `git diff --check` — passes.
+- `python3 scripts/validate.py --external --report /tmp/napol-link-results.json`
+  — 51 unique destinations: 48 HTTP 200; Medium 403, TryHackMe 429, LinkedIn 999.
+  No 404/410. All eight new Cloud URLs return 200; seven file paths also match the
+  inspected repository tree. BTLO redirects to login. Restricted responses are
+  not missing targets, and HTTP 200 is not verification of profile claims.
+
+The first external attempt encountered sandbox DNS restrictions; the authorized
+network-enabled rerun supplied these results. Chrome likewise required permission
+to launch outside the sandbox. No dependencies were added to the portfolio.
+
+## Browser and visual review
+
+Temporary Playwright checks used installed Google Chrome at 320, 390, 768 and
+1440 px. At all four widths:
+
+- Eight rendered project IDs in JSON order; count 08; no main-content horizontal
+  overflow, including expanded disclosures; no uncaught page errors.
+- Axe 4.10.3 WCAG 2/2.1/2.2 A/AA: zero detected violations with disclosures open.
+- All eight disclosures open with Enter and close with Space; focus outline visible.
+- At mobile widths, Menu/Escape state and focus restoration pass; all ten navigation
+  destinations close the menu and receive focus.
+- Cloud deep link opens its case study. Reduced motion yields auto scrolling and
+  zero active animations. Disabled-JS and malformed-project-JSON tests retain all
+  eight summaries, count and Cloud primary evidence links.
+
+Visually inspected desktop/mobile hero, narrow profile/activity panels and the
+Cloud card. Existing layout and colors retained; no content hidden to fit mobile.
+Hero heights before → after: 320 px, 1446 → 1510; 390 px, 1406 → 1406;
+768 px, 1123 → 1179; 1440 px, 819 → 830. The small increase accommodates the SOC
+profile row and wrapped Cloud/AppSec labels; primary copy and project action remain
+above the panels. SECURITY.LOG retains its documented-milestones explanation.
+
+## Publication audit and limits
+
+Touched-file pattern checks found no private keys, token/JWT values, private-IP
+literals, local home paths or email addresses. Tracked inventory has no .DS_Store,
+bytecode, key/state files or unrelated investigation material. Only public prose
+and links were added; existing exclusions and historical evidence remain intact.
+Temporary downloads, browser tools, screenshots and reports are outside the repo.
+This is a current-content review, not an exhaustive Git-history/upstream-image scan.
+
+Browser checks are Chrome desktop emulation, not physical-device or screen-reader
+testing. Cloud results describe reviewed repository evidence, not freshly rerun
+security labs. Branch-based evidence links can change; AUDIT.md records the SHA.
+
+Temporary review artifacts: `/tmp/napol-oct-browser/results.json`,
+`/tmp/napol-oct-browser/hero-comparison.json`, screenshots in that directory, and
+`/tmp/napol-link-results.json`.
+
+---
+
 # Portfolio v2 validation — 2026-09-21
 
 Current results supersede the historical verification records below. The workflow

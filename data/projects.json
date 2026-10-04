@@ -1,48 +1,66 @@
 [
   {
-    "id": "SEC-ENG-001",
-    "repo": "security-engineering-automation-lab",
-    "title": "Security Engineering & Automation Lab",
-    "description": "Investigated controlled service failures, restored least-privilege operation, and automated health and heartbeat checks.",
-    "why": "Make recovery measurable across network, process, permissions, and application layers.",
-    "technologies": [
-      "Linux",
-      "Python",
-      "Docker",
-      "Nginx",
-      "Log analysis"
-    ],
-    "architecture": "Nginx reverse proxy → Docker network → Python backend; a separate non-root Linux service produces heartbeat logs.",
+    "id": "CLOUD-001",
+    "repo": "cloud-kubernetes-security-engineering-lab",
+    "status": "COMPLETE",
+    "title": "Cloud & Kubernetes Security Engineering Lab",
+    "description": "Completed ten labs connecting baseline assessment, container and Kubernetes hardening, security scanning, automated controls, remediation, and regression validation in a local environment.",
+    "result": "10/10 labs complete. Hardened workload settings retained; policy checks passed; tested RBAC permissions denied; authorized network access preserved while the tested unauthorized path timed out under NetworkPolicy. Residual risks documented.",
+    "why": "Baseline → identify weaknesses → harden → scan → enforce controls → validate → remediate → retest → document residual risk.",
+    "architecture": "Docker application → local kind Kubernetes workload; Terraform configuration assessed statically; GitHub Actions runs container, IaC, and manifest policy checks.",
     "implemented": [
-      "Traced Nginx’s wrong upstream (app:8001) to the healthy backend (app:8000), corrected the configuration, and verified HTTP 200.",
-      "Diagnosed root:root mode 700 on the log directory blocking secsvc traversal; restored secsvc ownership and mode 750.",
-      "Recovered a stopped application while its container remained running; verified new heartbeat records.",
-      "Built scripts/health_check.py and scripts/log_analyzer.py to check HTTP/JSON health and heartbeat UID, status, gaps, and freshness."
+      "Compared container and workload baselines with explicit non-root execution, read-only filesystems, dropped capabilities, disabled privilege escalation, seccomp, resource controls, and disabled ServiceAccount token automount.",
+      "Scanned Terraform and container images with Trivy, triaged findings, remediated applicable configuration and package issues, and documented exceptions and deferred vulnerabilities.",
+      "Removed unnecessary RBAC authorization, restricted backend ingress with NetworkPolicy, and encoded Deployment requirements using Conftest and OPA/Rego.",
+      "Configured GitHub Actions validation and consolidated workload, policy, RBAC, and network regression evidence into a final assessment."
     ],
-    "securityDecisions": "Restore intended directory ownership and permissions; avoid broad permissions as a workaround.",
-    "validation": "Evidence records before/after failures and recovery. Healthy, synthetic anomalous, and malformed log samples exercise success and failure exits.",
-    "lessons": "Container Running ≠ Process Running ≠ Service Healthy. Verify the behavior of the service, then automate the checks.",
-    "limitations": "Local lab checks; no centralized collection, alert delivery, or production monitoring claim.",
+    "securityDecisions": "Preserve legitimate functionality while reducing privileges and reachability. Separate scanner findings, enforcement thresholds, tested behavior, and residual-risk decisions.",
+    "validation": "Lab 10 records 10 passing policy tests with exit code 0, six denied authorization queries for the tested identity, and authorized HTTP 200 versus an unauthorized connection timeout (curl exit 28). Its workload evidence records configuration; Lab 03 supplies earlier runtime verification.",
+    "lessons": "A passing gate is only as broad as its policy. Track the assessed artifact, test both allowed and denied paths, and retain unresolved findings alongside successful remediations.",
+    "limitations": "Local single-node lab; no cloud deployment or production-readiness claim. Residual container vulnerabilities and IaC exceptions remain. CI ignores unfixed image findings and reports IaC findings without blocking. Policy checks cover selected Deployment fields, not cluster admission. Lab 10 uses a different policy toolchain and does not repeat image scans or hosted CI. Deployment of the Lab 05 remediated image to the main Kubernetes workload is not established.",
     "links": [
       {
         "label": "SOURCE",
-        "url": "https://github.com/napol-n/security-engineering-automation-lab"
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab"
       },
       {
-        "label": "INCIDENT EVIDENCE",
-        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day01-network-service-incident.md"
+        "label": "FINAL ASSESSMENT",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/labs/lab-10-remediation-final-assessment/notes/final-security-assessment.md"
       },
       {
-        "label": "AUTOMATION",
-        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/scripts/log_analyzer.py"
+        "label": "CI/CD SECURITY",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/.github/workflows/security-ci.yml"
       },
       {
-        "label": "PERMISSION EVIDENCE",
-        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day02-linux-permission-incident.md"
+        "label": "POLICY REGRESSION",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/labs/lab-10-remediation-final-assessment/evidence/final/policy-regression.txt"
+      },
+      {
+        "label": "RBAC REGRESSION",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/labs/lab-10-remediation-final-assessment/evidence/final/rbac-regression.txt"
+      },
+      {
+        "label": "WORKLOAD HARDENING",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/labs/lab-10-remediation-final-assessment/evidence/final/kubernetes-security-retest.txt"
+      },
+      {
+        "label": "NETWORK REGRESSION",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/labs/lab-10-remediation-final-assessment/evidence/final/network-regression.txt"
+      },
+      {
+        "label": "RESIDUAL RISK",
+        "url": "https://github.com/napol-n/cloud-kubernetes-security-engineering-lab/blob/main/labs/lab-10-remediation-final-assessment/notes/residual-risk.md"
       }
     ],
-    "status": "DOCUMENTED",
-    "result": "HTTP 502 → 200. Non-root log access restored. Process recovery verified through fresh heartbeats."
+    "technologies": [
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "Trivy",
+      "GitHub Actions",
+      "RBAC / NetworkPolicy",
+      "Conftest / OPA"
+    ]
   },
   {
     "id": "APPSEC-001",
@@ -174,6 +192,51 @@
         "text": "Local authorized lab; no production assessment or broader compromise is claimed. The final report retains supporting-publication gaps for L03-02 and L07-01. Historical severity and present remediation state are separate."
       }
     ]
+  },
+  {
+    "id": "SEC-ENG-001",
+    "repo": "security-engineering-automation-lab",
+    "title": "Security Engineering & Automation Lab",
+    "description": "Investigated controlled service failures, restored least-privilege operation, and automated health and heartbeat checks.",
+    "why": "Make recovery measurable across network, process, permissions, and application layers.",
+    "technologies": [
+      "Linux",
+      "Python",
+      "Docker",
+      "Nginx",
+      "Log analysis"
+    ],
+    "architecture": "Nginx reverse proxy → Docker network → Python backend; a separate non-root Linux service produces heartbeat logs.",
+    "implemented": [
+      "Traced Nginx’s wrong upstream (app:8001) to the healthy backend (app:8000), corrected the configuration, and verified HTTP 200.",
+      "Diagnosed root:root mode 700 on the log directory blocking secsvc traversal; restored secsvc ownership and mode 750.",
+      "Recovered a stopped application while its container remained running; verified new heartbeat records.",
+      "Built scripts/health_check.py and scripts/log_analyzer.py to check HTTP/JSON health and heartbeat UID, status, gaps, and freshness."
+    ],
+    "securityDecisions": "Restore intended directory ownership and permissions; avoid broad permissions as a workaround.",
+    "validation": "Evidence records before/after failures and recovery. Healthy, synthetic anomalous, and malformed log samples exercise success and failure exits.",
+    "lessons": "Container Running ≠ Process Running ≠ Service Healthy. Verify the behavior of the service, then automate the checks.",
+    "limitations": "Local lab checks; no centralized collection, alert delivery, or production monitoring claim.",
+    "links": [
+      {
+        "label": "SOURCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab"
+      },
+      {
+        "label": "INCIDENT EVIDENCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day01-network-service-incident.md"
+      },
+      {
+        "label": "AUTOMATION",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/scripts/log_analyzer.py"
+      },
+      {
+        "label": "PERMISSION EVIDENCE",
+        "url": "https://github.com/napol-n/security-engineering-automation-lab/blob/main/evidence/day02-linux-permission-incident.md"
+      }
+    ],
+    "status": "DOCUMENTED",
+    "result": "HTTP 502 → 200. Non-root log access restored. Process recovery verified through fresh heartbeats."
   },
   {
     "id": "IAM-001",
